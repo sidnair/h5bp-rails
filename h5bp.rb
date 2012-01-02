@@ -2,8 +2,12 @@
 # Written by: Russ Frisch
 # http://github.com/russfrisch/h5bp-rails
 
+h5bp = "https://github.com/h5bp/html5-boilerplate/"
+russ_h5bp_rails = "https://github.com/russfrisch/h5bp-rails/"
+russ_h5bp = "https://github.com/russfrisch/html5-boilerplate/"
+
 # Download HTML5 Boilerplate plugins.js (converted to CoffeeScript)
-get "https://github.com/russfrisch/h5bp-rails/raw/master/assets/plugins.js.coffee", "app/assets/javascripts/plugins.js.coffee"
+get "#{russ_h5bp_rails}raw/master/assets/plugins.js.coffee", "app/assets/javascripts/plugins.js.coffee"
 
 # Download and merge HTML5 Boilerplate stylesheet with application.css
 inside('app/assets/stylesheets/') do
@@ -22,28 +26,28 @@ prepend_to_file 'app/assets/stylesheets/application.css' do
 
 "
 end
-get "https://github.com/paulirish/html5-boilerplate/raw/master/css/style.css", "app/assets/stylesheets/application-pre.css"
-get "https://github.com/paulirish/html5-boilerplate/raw/master/css/style.css", "app/assets/stylesheets/application-post.css"
+get "#{h5bp}raw/master/css/style.css", "app/assets/stylesheets/application-pre.css"
+get "#{h5bp}raw/master/css/style.css", "app/assets/stylesheets/application-post.css"
 gsub_file 'app/assets/stylesheets/application-pre.css', /\/\* ==\|== media queries.* /m, ''
 gsub_file 'app/assets/stylesheets/application-post.css', /\A.*?(==\|== primary styles).*?(\*\/){1}/m, ''
 gsub_file 'app/assets/stylesheets/application-pre.css', /==\|==/, '==|==.'
 gsub_file 'app/assets/stylesheets/application-post.css', /==\|==/, '==|==.'
 
 # Download HTML5 Boilerplate site root assets
-get "https://github.com/russfrisch/html5-boilerplate/raw/master/apple-touch-icon-114x114-precomposed.png", "public/apple-touch-icon-114x114-precomposed.png"
-get "https://github.com/russfrisch/html5-boilerplate/raw/master/apple-touch-icon-57x57-precomposed.png", "public/apple-touch-icon-57x57-precomposed.png"
-get "https://github.com/russfrisch/html5-boilerplate/raw/master/apple-touch-icon-72x72-precomposed.png", "public/apple-touch-icon-72x72-precomposed.png"
-get "https://github.com/russfrisch/html5-boilerplate/raw/master/apple-touch-icon-precomposed.png", "public/apple-touch-icon-precomposed.png"
-get "https://github.com/russfrisch/html5-boilerplate/raw/master/apple-touch-icon.png", "public/apple-touch-icon.png"
-get "https://github.com/russfrisch/html5-boilerplate/raw/master/crossdomain.xml", "public/crossdomain.xml"
-get "https://github.com/russfrisch/html5-boilerplate/raw/master/humans.txt", "public/humans.txt"
-get "https://github.com/russfrisch/html5-boilerplate/raw/master/.htaccess", "public/.htaccess"
+get "#{russ_h5bp}raw/master/apple-touch-icon-114x114-precomposed.png", "public/apple-touch-icon-114x114-precomposed.png"
+get "#{russ_h5bp}raw/master/apple-touch-icon-57x57-precomposed.png", "public/apple-touch-icon-57x57-precomposed.png"
+get "#{russ_h5bp}raw/master/apple-touch-icon-72x72-precomposed.png", "public/apple-touch-icon-72x72-precomposed.png"
+get "#{russ_h5bp}raw/master/apple-touch-icon-precomposed.png", "public/apple-touch-icon-precomposed.png"
+get "#{russ_h5bp}raw/master/apple-touch-icon.png", "public/apple-touch-icon.png"
+get "#{russ_h5bp}raw/master/crossdomain.xml", "public/crossdomain.xml"
+get "#{russ_h5bp}raw/master/humans.txt", "public/humans.txt"
+get "#{russ_h5bp}raw/master/.htaccess", "public/.htaccess"
 
 # Update application.html.erb with HTML5 Boilerplate index.html content
 inside('app/views/layouts') do
   FileUtils.rm_rf 'application.html.erb'
 end
-get "https://github.com/russfrisch/html5-boilerplate/raw/master/index.html", "app/views/layouts/application.html.erb"
+get "#{russ_h5bp}raw/master/index.html", "app/views/layouts/application.html.erb"
 gsub_file 'app/views/layouts/application.html.erb', /<link rel="stylesheet" href="css\/style.css">/ do
   "<%= stylesheet_link_tag \"application\" %>"
 end
